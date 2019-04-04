@@ -1,4 +1,4 @@
-<h1>Zip Code Range Minimizer Coding Challenge</h1>
+<h1>Zip Code Range Minimizer</h1>
 <p>Author: Suresh Pasupuleti</p>
 <p>Date: 04-04-2019</p>
 
