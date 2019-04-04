@@ -24,7 +24,7 @@ public class ZipCodeRangeMinimizerServiceTest {
      * Expected: [94133,94133] [94200,94299] [94600,94699]
      */
     @Test
-    public void case1() {
+    public void noOverlappingZipCodeRanges() {
         ZipCodeRange[] newRanges = ZipCodeRangeMinimizer.minimizeZipCodeRanges(new String[]{
                 "[94133,94133]", "[94200,94299]", "[94600,94699]"
         });
@@ -40,7 +40,7 @@ public class ZipCodeRangeMinimizerServiceTest {
      * Expected: [94133,94133] [94200,94399]
      */
     @Test
-    public void case2() {
+    public void overLappingZipCodeRanges() {
         ZipCodeRange[] newRanges = ZipCodeRangeMinimizer.minimizeZipCodeRanges(new String[]{
                 "[94133,94133]", "[94200,94299]", "[94226,94399]"
         });
@@ -52,15 +52,15 @@ public class ZipCodeRangeMinimizerServiceTest {
      *
      * All the same ranges
      *
-     * Input: [11111,11111] [11111,11111] [11111,1111]
-     * Expected: [11111,11111]
+     * Input: [99999,99999] [99999,99999] [99999,99999]
+     * Expected: [99999,99999]
      */
     @Test
-    public void case3() {
+    public void equalZipCodeRanges() {
         ZipCodeRange[] newRanges = ZipCodeRangeMinimizer.minimizeZipCodeRanges(new String[]{
-                "[11111,11111]", "[11111,11111]", "[11111,11111]"
+                "[99999,99999]", "[99999,99999]", "[99999,99999]"
         });
-        Assert.assertEquals("[11111,11111]", ZipCodeRangeUtil.join(newRanges, " "));
+        Assert.assertEquals("[99999,99999]", ZipCodeRangeUtil.join(newRanges, " "));
     }
 
     /**
@@ -68,15 +68,15 @@ public class ZipCodeRangeMinimizerServiceTest {
      *
      * All ranges get swallowed up by one range
      *
-     * Input: [11111,11111] [11112,11113] [11111,11111] [11117,11118] [11110,11119] [10000,20000]
-     * Expected: [10000,20000]
+     * Input: [61111,61111], [61112,61113], [61111,61111], [61117,61118], [61110,61119], [60000,70000]
+     * Expected: [60000,70000]
      */
     @Test
-    public void case4() {
+    public void swalloZipCodeRangesByOneRange() {
         ZipCodeRange[] newRanges = ZipCodeRangeMinimizer.minimizeZipCodeRanges(new String[]{
-                "[11111,11111]", "[11112,11113]", "[11111,11111]", "[11117,11118]", "[11110,11119]", "[10000,20000]"
+                "[61111,61111]", "[61112,61113]", "[61111,61111]", "[61117,61118]", "[61110,61119]", "[60000,70000]"
         });
-        Assert.assertEquals("[10000,20000]", ZipCodeRangeUtil.join(newRanges, " "));
+        Assert.assertEquals("[60000,70000]", ZipCodeRangeUtil.join(newRanges, " "));
     }
 
     /**
@@ -84,14 +84,14 @@ public class ZipCodeRangeMinimizerServiceTest {
      *
      * Specify some ranges backwards
      *
-     * Input: [31111,11111] [11111,31111] [11110,11111] [11117,10000] [11110,11119] [32110,33112]
-     * Expected: [11111,31111] [32110,33112]
+     * Input: [21111,11111] [11111,21111] [11110,11111] [11118,10000] [11110,11119] [22110,23112]
+     * Expected: [11111,21111] [22110,23112]
      */
     @Test
-    public void case5() {
+    public void overlapZipCodeRangeBackwards() {
         ZipCodeRange[] newRanges = ZipCodeRangeMinimizer.minimizeZipCodeRanges(new String[]{
-                "[31111,11111]", "[11111,31111]", "[11110,11111]", "[11117,10000]", "[11110,11119]", "[32110,33112]"
+                "[21111,11111]", "[11111,21111]", "[11110,11111]", "[11117,10000]", "[11110,11119]", "[22110,23112]"
         });
-        Assert.assertEquals("[10000,31111] [32110,33112]", ZipCodeRangeUtil.join(newRanges, " "));
+        Assert.assertEquals("[10000,21111] [22110,23112]", ZipCodeRangeUtil.join(newRanges, " "));
     }
 }
