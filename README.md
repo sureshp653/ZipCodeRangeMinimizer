@@ -32,3 +32,8 @@
   <li>Gradel 4.0</li>
   <li>lombok</li>  
 </ul>
+
+<h2>Junit Testing<h2>
+  <p>ZipCodeRangeMinimizerServiceTest covers all the test scenarios</p>  
+</ul>
+
