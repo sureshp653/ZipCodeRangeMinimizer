@@ -19,7 +19,7 @@
   <li>Ranges may or may not overlap</li>
   <li>Your solution will be evaluated on the correctness and the approach taken, and adherence to coding standards and best practices</li>
 </ul>
-<h2>Examples</h2>
+<h2>EXAMPLES</h2>
 <p>If the input = [94133,94133] [94200,94299] [94600,94699] </p>
 <p>Then the output should be = [94133,94133] [94200,94299] [94600,94699]</p>
 <p>If the input = [94133,94133] [94200,94299] [94226,94399] </p>
@@ -30,5 +30,5 @@
 <ul>
   <li>Java 8</li>
   <li>Gradel 4.0</li>
-  <li>lombok>  
+  <li>lombok</li>  
 </ul>
