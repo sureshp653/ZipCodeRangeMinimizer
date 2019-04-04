@@ -33,7 +33,5 @@
   <li>lombok</li>  
 </ul>
 
-<h2>Junit Testing<h2>
-  <p>ZipCodeRangeMinimizerServiceTest covers all the test scenarios</p>  
-
-
+<h2>Junit Testing</h2>
+  <p>ZipCodeRangeMinimizerServiceTest covers all the test scenarios</p> 
